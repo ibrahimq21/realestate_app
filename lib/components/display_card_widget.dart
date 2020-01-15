@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class DisplayCardWidget extends StatelessWidget {
   final String imageFile, name, city, price, distance;
 
@@ -33,10 +35,9 @@ class DisplayCardWidget extends StatelessWidget {
             color: Colors.orange,
             child: Text(
               'For Sale',
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
+              style: kTextLabelTheme.copyWith(
+                color: Colors.white,
+              ),
             ),
           ),
           Container(
@@ -47,11 +48,11 @@ class DisplayCardWidget extends StatelessWidget {
               children: <Widget>[
                 Text(
                   name,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: kCardTextStyle,
                 ),
                 Text(
                   price,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+                  style: kCardTextStyle,
                 ),
               ],
             ),
@@ -69,7 +70,7 @@ class DisplayCardWidget extends StatelessWidget {
                     ),
                     Text(
                       city,
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      style: kCardTextStyle,
                     ),
                     Icon(
                       Icons.directions_car,
@@ -77,7 +78,7 @@ class DisplayCardWidget extends StatelessWidget {
                     ),
                     Text(
                       '$distance sq/m',
-                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      style: kCardTextStyle,
                     ),
                   ],
                 ),
@@ -87,7 +88,7 @@ class DisplayCardWidget extends StatelessWidget {
                 ),
                 Text(
                   '$review Reviews',
-                  style: TextStyle(color: Colors.white, fontSize: 15),
+                  style: kCardTextStyle,
                 ),
               ],
             ),

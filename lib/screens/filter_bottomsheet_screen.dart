@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:realestate_app/utils/custom_range_thumb_shape.dart';
+import 'package:realestate_app/utils/custom_range_value_indicator_shape.dart';
+import '../constants.dart';
 
-class FilterBottomSheetScreen extends StatelessWidget {
+class FilterBottomSheetScreen extends StatefulWidget {
+  @override
+  _FilterBottomSheetScreenState createState() =>
+      _FilterBottomSheetScreenState();
+}
+
+class _FilterBottomSheetScreenState extends State<FilterBottomSheetScreen> {
+  double selectedValue;
+
+  RangeValues values = RangeValues(17.0, 100.0);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +35,7 @@ class FilterBottomSheetScreen extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'Filter',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    style: kTextLabelTheme,
                   ),
                   Text(
                     ' your search',
@@ -36,8 +49,7 @@ class FilterBottomSheetScreen extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       'Price',
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w700),
+                      style: kTextLabelTheme,
                     ),
                     Text(
                       ' Range',
@@ -46,15 +58,40 @@ class FilterBottomSheetScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Slider(
-                value: 17.0,
-                min: 17.0,
-                max: 100.0,
-                onChanged: (value) {},
+              SliderTheme(
+                data: SliderTheme.of(context).copyWith(
+                  rangeThumbShape: CustomRangeThumbShape(),
+                  activeTrackColor: Color(0xff143896),
+                  inactiveTrackColor: Color(0xffDFDFDF),
+                  showValueIndicator: ShowValueIndicator.always,
+                  valueIndicatorColor: Colors.white,
+                  rangeValueIndicatorShape: CustomRangeValueIndicatorShape(),
+                  valueIndicatorTextStyle: TextStyle(color: Colors.black),
+                  valueIndicatorShape: SliderComponentShape.noOverlay,
+                  thumbColor: Color(0xff143896),
+//                    thumbShape: RoundSliderThumbShape(
+//                        enabledThumbRadius: 20.0, disabledThumbRadius: 2.0)
+                ),
+                child: RangeSlider(
+                  values: values,
+                  divisions: 5,
+                  min: 17.0,
+                  max: 100.0,
+                  labels: RangeLabels(
+                      '${values.start.toInt()}k', '${values.end.toInt()}k'),
+                  onChanged: (value) {
+                    setState(() {
+                      values = value;
+                    });
+                  },
+                ),
               ),
-              Text(
-                'Rooms',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              Padding(
+                padding: EdgeInsets.only(top: 30.0),
+                child: Text(
+                  'Rooms',
+                  style: kTextLabelTheme,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,7 +117,7 @@ class FilterBottomSheetScreen extends StatelessWidget {
               ),
               Text(
                 'Bathrooms',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                style: kTextLabelTheme,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
