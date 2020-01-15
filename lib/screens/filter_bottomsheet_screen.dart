@@ -78,7 +78,7 @@ class _FilterBottomSheetScreenState extends State<FilterBottomSheetScreen> {
                   min: 17.0,
                   max: 100.0,
                   labels: RangeLabels(
-                      '${values.start.toInt()}k', '${values.end.toInt()}k'),
+                      '\$${values.start.toInt()}k', '\$${values.end.toInt()}k'),
                   onChanged: (value) {
                     setState(() {
                       values = value;
