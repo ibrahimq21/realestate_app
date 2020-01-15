@@ -19,3 +19,14 @@ feel free to contribute in this repository.
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Home Page
+<img src="screenshots/screenshot_1.png" width="1080" height="1920">
+
+
+
+## Filter Page
+<img src="screenshots/screenshot_2.png" width="1080" height="1920">
+
+
+<img src="screenshots/screenshot_3.png" width="1080" height="1920">
